@@ -20,6 +20,11 @@ gulp.task('vendor', function() {
     ])
     .pipe(gulp.dest('./vendor/jquery'))
 
+  // custom
+  gulp.src([
+    './css/*',
+  ])
+  .pipe(gulp.dest('./css'))
 })
 
 // Default task
