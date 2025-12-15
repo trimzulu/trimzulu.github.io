@@ -10,12 +10,14 @@
 
     <title>trimzulu.com</title>
 
+    <link rel="canonical" href="https://www.trimzulu.com/"/>
     <link rel="icon" type="image/png" href="media/favicon-32x32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="media/favicon-16x16.png" sizes="16x16" />
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link href="css/trimzulu.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/counter.css">
 
   </head>
 
@@ -80,6 +82,8 @@
 
           <p class="lead">My name is AJ Davis and I'm a software developer in Orlando.</p>
           <p>Original template from <a href="https://startbootstrap.com/template-overviews/bare/">Start Bootstrap</a></p>
+          
+          <div class="counter-element"></div>
         </div>
       </div>
     </div>
@@ -94,6 +98,34 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="js/counter.js"></script>
+    <script>
+      // Initialize counter when it scrolls into view
+      document.addEventListener('DOMContentLoaded', function() {
+        const startDate = new Date('2024-07-13');
+        const daysElapsed = getDaysElapsed(startDate);
+        const timeElapsed = daysElapsed < 365*2 ? daysElapsed : getYearsElapsed(startDate);
+
+        const element = document.querySelector(".counter-element");
+        let counter = new FlipCounter(element, timeElapsed);
+
+        // Use Intersection Observer to trigger animation when counter is visible
+        const observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              counter.play();
+              observer.unobserve(element); // Only play once
+            }
+          });
+        }, { threshold: 0.5 }); // Trigger when 50% visible
+        observer.observe(element);
+
+        // Replay animation on hover
+        element.addEventListener('mouseenter', function() {
+          counter.play();
+        });
+      });
+    </script>
 
   </body>
 

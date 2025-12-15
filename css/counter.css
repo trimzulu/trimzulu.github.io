@@ -1,0 +1,151 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+  gap: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.number-input {
+  padding: 10px;
+  font-size: 16px;
+  width: 200px;
+  text-align: center;
+}
+
+.number-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.number-button:hover {
+  background-color: #0056b3;
+}
+
+.digit-flipper {
+  display: inline-block;
+  height: 1em;
+  font-size: 4vmin;
+  line-height: 1;
+  margin: 0 0.05em;
+  -webkit-perspective: 300px;
+          perspective: 300px;
+  position: relative;
+  width: 0.65em;
+}
+
+.digit-decimal {
+  display: inline-block;
+  font-size: 4vmin;
+  line-height: 1;
+  height: 1em;
+  width: 0.3em;
+  margin: 0 0.05em;
+  border: 1px solid #999;
+  border-radius: 10px;
+  background-color: #ffffff;
+  text-align: center;
+  box-sizing: border-box;
+  vertical-align: top;
+}
+
+.digit-flipper__digit {
+  display: block;
+  height: 100%;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+.digit-flipper__digit-top,
+.digit-flipper__digit-bottom {
+  color: black;
+  display: block;
+  position: absolute;
+  -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+}
+.digit-flipper__digit-top {
+  background-color: #ffffff;
+  border-top: 1px solid #999;
+  border-left: 1px solid #999;
+  border-right: 1px solid #999;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  -webkit-clip-path: inset(0 0 51% 0);
+          clip-path: inset(0 0 51% 0);
+  overflow: hidden;
+  -webkit-transform: rotateX(0deg);
+          transform: rotateX(0deg);
+}
+.digit-flipper__digit-bottom {
+  background-color: #eeeeee;
+  border-bottom: 1px solid #999;
+  border-left: 1px solid #999;
+  border-right: 1px solid #999;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  -webkit-clip-path: inset(51% 0 0 0);
+          clip-path: inset(51% 0 0 0);
+  -webkit-transform: rotateX(90deg);
+          transform: rotateX(90deg);
+}
+.digit-flipper__digit--flip-bottom .digit-flipper__digit-bottom {
+  -webkit-animation: flip-bottom .3s ease-in 0s 1 forwards;
+          animation: flip-bottom .3s ease-in 0s 1 forwards;
+}
+.digit-flipper__digit--flip-top .digit-flipper__digit-top {
+  -webkit-animation: flip-top .3s ease-in 0s 1 forwards;
+          animation: flip-top .3s ease-in 0s 1 forwards;
+}
+@-webkit-keyframes flip-top {
+  from {
+    -webkit-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+  }
+  to {
+    -webkit-transform: rotateX(-90deg);
+            transform: rotateX(-90deg);
+  }
+}
+@keyframes flip-top {
+  from {
+    -webkit-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+  }
+  to {
+    -webkit-transform: rotateX(-90deg);
+            transform: rotateX(-90deg);
+  }
+}
+@-webkit-keyframes flip-bottom {
+  from {
+    -webkit-transform: rotateX(90deg);
+            transform: rotateX(90deg);
+  }
+  to {
+    -webkit-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+  }
+}
+@keyframes flip-bottom {
+  from {
+    -webkit-transform: rotateX(90deg);
+            transform: rotateX(90deg);
+  }
+  to {
+    -webkit-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+  }
+}
+.counter-element {
+  display: inline-block;
+}
